@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title>Example 1 - jQuery Radio Rater </title>
+	<script src="javascripts/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="javascripts/jquery.radio-rater.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" href="stylesheets/radio-rater.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	
+	<script type="text/javascript" charset="utf-8">
+		
+		$().ready(function() {
+			$('body').addClass("js");
+			$(".radio-rater").createRadioRater();
+		});
+	</script>
+	
+</head>
+
+<body>
+
+
+<form method="post">
+	
+	<ul class="radio-rater">
+		<li><input type="radio" name="movie-rating" value="1" id="movie-rating-1"><label for="movie-rating-1">1: Utter Crap</label></li>
+		<li><input type="radio" name="movie-rating" value="2" id="movie-rating-2"><label for="movie-rating-2">2: Poor</label></li>
+		<li><input type="radio" name="movie-rating" value="3" id="movie-rating-3"><label for="movie-rating-3">3: Whatever</label></li>
+		<li><input type="radio" name="movie-rating" value="4" id="movie-rating-4"><label for="movie-rating-4">4: Good!</label></li>
+		<li><input type="radio" name="movie-rating" value="5" id="movie-rating-5"><label for="movie-rating-5">5: Best Movie Ever</label></li>
+		<li class="clear"><input type="radio" name="movie-rating" value="" id="movie-rating-clear"><label for="movie-rating-clear">[clear]</label></li>
+	</ul>
+	
+
+	<input type="submit" value="Submit" />
+</form>
+
+</body>
+</html>

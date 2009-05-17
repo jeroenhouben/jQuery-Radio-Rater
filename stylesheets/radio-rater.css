@@ -1,0 +1,74 @@
+/* rating */
+.js .radio-rater, .radio-rater a:hover, .radio-rater a:active, .radio-rater a:focus, .radio-rater .current {
+	background:transparent url(../images/radio-rater/star.gif) repeat-x scroll 0 0;
+}
+.js .radio-rater {
+	background-position:left top;
+	height:16px;
+	list-style-image:none;
+	list-style-position:outside;
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	position:relative;
+	width:80px;
+}
+
+/* 
+this class gets set by JS if the rating component includes a "clearer"
+the clearer is just a LI with a radiobutton that has an empty value
+*/
+.js .with-clearer {
+	margin-left: 16px;
+}
+
+.js .radio-rater li {
+display:inline;
+}
+.js .radio-rater a, .radio-rater .current {
+	height:16px;
+	line-height:16px;
+	outline-color:-moz-use-text-color;
+	outline-style:none;
+	outline-width:medium;
+	overflow:hidden;
+	position:absolute;
+	text-indent:-1000em;
+	top:0;
+	left:0;
+}
+.js .radio-rater .clear a {
+	background-image: url(../images/radio-rater/delete.gif);
+	width:16px;
+	left:-16px;
+}
+.js .radio-rater a:hover, .radio-rater a:active, .radio-rater a:focus {
+	background-position:0 100%;
+}
+.js .radio-rater li.active a {
+	background:transparent url(../images/rater-rater/star.gif) repeat-x scroll 0 -16px !important;
+}
+.js .radio-rater a.rating1 {
+	width:20%;
+	z-index:36;
+}
+.js .radio-rater a.rating2 {
+	width:40%;
+	z-index:35;
+}
+.js .radio-rater a.rating3 {
+	width:60%;
+	z-index:34;
+}
+.js .radio-rater a.rating4 {
+	width:80%;
+	z-index:33;
+}
+.js .radio-rater a.rating5 {
+	width:100%;
+	z-index:32;
+}
+.js .radio-rater .current {
+	background-position:left center;
+	z-index:31;
+}
