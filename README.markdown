@@ -35,9 +35,14 @@ The class="js" is added so we can programmatically skip styles for non JS device
 How to customize?
 -----------------
 By default, you just need to include one stylesheet: radio-rater-base.css
-If you want different images you can override some styles in a seperate css file. radio-radio-bigsmile.css and radio-rater-star.css are examples.
+If you want different images you can override some styles in a seperate css file. 
 
-Having more or less rating options and putting in an unrate option is just a matter of adding more radio buttons.
+Be sure to pass the imaeWidth to the createRadioRaters() function
+
+    $(".radio-rater").createRadioRaters({imageWidth: 64});
+
+Having more or less rating options and putting in an "unrate" option is just a matter of adding more radio buttons.
+Look at customized.html for an example.
 
 Why another rating widget?
 --------------------------
