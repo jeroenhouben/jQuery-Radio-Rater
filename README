@@ -1,5 +1,0 @@
-jQuery plugin for creating youtube style rating components using progressive enhancement
-
-clone or download and then open example.html in your browser to see how it works. 
-
-Integrating this with AJAX, rails or whatever you want, should be straightforward as this plugin uses nothing but ordinary radio buttons. Disable javascript and behold: it still works!
