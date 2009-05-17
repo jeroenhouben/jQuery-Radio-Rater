@@ -11,10 +11,9 @@
 	<link rel="stylesheet" href="stylesheets/radio-rater.css" type="text/css" media="screen" title="no title" charset="utf-8">
 	
 	<script type="text/javascript" charset="utf-8">
-		
 		$().ready(function() {
 			$('body').addClass("js");
-			$(".radio-rater").createRadioRater();
+			$(".radio-rater").createRadioRaters({imageWidth: 16});
 		});
 	</script>
 	
@@ -22,7 +21,7 @@
 
 <body>
 
-
+<h2>Standard 5 star rating</h2>
 <form method="post">
 	
 	<ol class="radio-rater">
@@ -31,11 +30,39 @@
 		<li><input type="radio" name="movie[rating]" value="3" id="mr-3"><label for="mr-3">Whatever</label></li>
 		<li><input type="radio" name="movie[rating]" value="4" id="mr-4"><label for="mr-4">Good!</label></li>
 		<li><input type="radio" name="movie[rating]" value="5" id="mr-5"><label for="mr-5">Best Movie Ever</label></li>
-		<li class="unrate"><input type="radio" name="movie[rating]" value="" id="mr-unrate"><label for="mr-unrate">[clear rating]</label></li>
 	</ol>
 
 	<input type="submit" value="Rate It!" />
 </form>
+
+<h2>Only three choices ...</h2>
+<form method="post">
+	
+	<ol class="radio-rater">
+		<li><input type="radio" name="song[rating]" value="1" id="sr-1"><label for="sr-1">Shit</label></li>
+		<li><input type="radio" name="song[rating]" value="2" id="sr-2"><label for="sr-2">OK</label></li>
+		<li><input type="radio" name="song[rating]" value="3" id="sr-3"><label for="sr-3">Nice!</label></li>
+	</ol>
+
+	<input type="submit" value="Rate It!" />
+</form>
+
+<h2>Clear an existing rating</h2>
+<form method="post">
+	
+	<ul class="radio-rater">
+		<li><input type="radio" name="poem[rating]" value="1" id="pr-1"><label for="pr-1">... God ..</label></li>
+		<li><input type="radio" checked="checked" name="poem[rating]" value="2" id="pr-2"><label for="mr-2">Not impressed</label></li>
+		<li><input type="radio" name="poem[rating]" value="3" id="pr-3"><label for="pr-3">Fair</label></li>
+		<li><inputtype="radio" name="poem[rating]" checked="checked" value="4" id="pr-4"><label for="pr-4">Damn Good</label></li>
+		<li><input type="radio" name="poem[rating]" value="5" id="pr-5"><label for="pr-5">Brilliant!</label></li>
+
+    	<li class="unrate"><input type="radio" name="poem[rating]" value="" id="pr-unrate"><label for="pr-unrate">[clear rating]</label></li>
+	</ul>
+
+	<input type="submit" value="Rate It!" />
+</form>
+
 
 </body>
 </html>

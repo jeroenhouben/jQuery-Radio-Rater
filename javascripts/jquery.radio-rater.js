@@ -1,33 +1,47 @@
 function RadioRater(container, settings) {
-	
+	/*
+	* OL or UL containing the radio buttons
+	*/ 
 	this.container = container;
+	/*
+	* elements are stacked, start at this z-index and counting DOWN
+	*/
+	this.zIndexStart = 30;
+	/*
+	* width in pixels of image representing trigger (star.gif, thumb.png whatever..)
+	*/
+	this.imageWidth = settings.imageWidth ? settings.imageWidth : 16;
 
 	// find radios for rating and (optionally radios for unrating/resetting)
 	this.ratingRadios = $("input:radio[value!=]", container);
 	this.unRateRadio  = $("input:radio[value=]", container);
 	
 	this.numberOfRatingOptions 	= this.ratingRadios.length;
-	this.ratingOptionWidth 			= 100 / this.numberOfRatingOptions; // gets the width for each option as percentage %
+	this.ratingOptionWidthPerc 	= 100 / this.numberOfRatingOptions; // gets the width for each option as percentage %
 
 	this.ratingAnchor  = $('<a href="#">rater</a>');
-	this.unRateAnchor   = $('<a href="#">unrater</a>');
+	this.unRateAnchor  = $('<a href="#" style="z-index:'+this.zIndexStart+'">unrater</a>');
 	this.currentRating = $('<li class="current" style="width: 0%;">0 / '+this.numberOfRatingOptions+'</li>');
-
-	// add the LI with the current rating
-	$(this.container).prepend(this.currentRating);	
 	
-	this.ratingAnchor.bind("click", this.rateIt.bind(this));
-	
-	this.transformRatingRadios();
-	
-	if (this.unRateRadio.length > 0) {
-		this.unRateAnchor.bind("click", this.unRateIt.bind(this));
-		this.transformClearTrigger();
-	}
-	
+	this.init();
 }
 
 RadioRater.prototype = {
+
+	init:function() {
+		$(this.container).css("width", this.numberOfRatingOptions * this.imageWidth + "px");
+		
+		// add the LI with the current rating
+		$(this.container).prepend(this.currentRating);
+	
+		this.ratingAnchor.bind("click", this.rateIt.bind(this));
+		this.transformRatingRadios();
+	
+		if (this.unRateRadio.length > 0) {
+			this.unRateAnchor.bind("click", this.unRateIt.bind(this));
+			this.transformUnRateTrigger();
+		}
+	},
 
 	rateIt: function(e) {
 		var clickedAnchor = $(e.target);
@@ -50,11 +64,9 @@ RadioRater.prototype = {
 
 	visualizeRating: function(rating) {
 		if (rating && rating > 0) {
-			var currentRatingAnchor = $('a.rating'+rating, this.container);
-
-			this.currentRating.siblings().removeClass("active");
-			currentRatingAnchor.parent("li").addClass("active");
-			this.currentRating.css("width", (this.ratingOptionWidth * rating) + "%");
+			$('a', this.container).css("background-position", "0 100%");
+			$('a.rating'+rating, this.container).css("background-position", "0 -16px");
+			this.currentRating.css("width", (this.ratingOptionWidthPerc * rating) + "%");
 			return true;
 		}
 		// reset the rating if no rating was given
@@ -62,23 +74,30 @@ RadioRater.prototype = {
 		this.currentRating.css("width", "0");
 	},	
 
-	transformClearTrigger: function() {
+	transformUnRateTrigger: function() {
 		// hide radio button
 		this.unRateRadio.hide();
+		// make room for this one
+		$(this.container).css("margin-left", this.imageWidth + "px");
+		this.unRateAnchor.css("width", this.imageWidth + "px");
+		this.unRateAnchor.css("left", -this.imageWidth + "px");
+
 		this.unRateAnchor.insertAfter(this.unRateRadio);
-		// add a css class to the container element so we can create space for the unrater Anchor
-		$(this.container).addClass("with-unrater");
 	},
 
 	transformRatingRadios: function() {
 		var i 			= 1;
 		var anchor  = this.ratingAnchor;
 		var self    = this;
+		var zIndex = this.zIndexStart;
 		
 		this.ratingRadios.each(function () {
 			
 			// clone & setup the anchor 
 			var clonedAnchor = anchor.clone(true);
+
+			clonedAnchor.css("width", (self.ratingOptionWidthPerc*i) + "%");
+			clonedAnchor.css("z-index", zIndex--)
 			clonedAnchor.attr("class", "rating"+i);
 			clonedAnchor.attr("rel", i);
 			clonedAnchor.text(i);
@@ -86,9 +105,7 @@ RadioRater.prototype = {
 			clonedAnchor.insertAfter($(this));
 			
 			// if a radio is checked - we'll visualize this
-			if (this.checked) {
-				self.visualizeRating(this.value);
-			}
+			if (this.checked) self.visualizeRating(this.value);
 			
 		 	$(this).hide();
 			i++;
@@ -96,14 +113,13 @@ RadioRater.prototype = {
 		
 		// don't need labels
 		$('label', this.container).remove();
-
 	}
 	
 }           
  
 // extend jquery 
 $.extend($.fn, {
-	createRadioRater: function(settings) {
+	createRadioRaters: function(settings) {
 		for(var i=0; i<this.length; i++) {
 			new RadioRater(this[i], settings);
 		}

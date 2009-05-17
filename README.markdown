@@ -3,9 +3,10 @@ jQuery plugin for creating youtube style rating components using progressive enh
 
 clone or download and then open example.html in your browser to see how it works. 
 
-Integrating this with AJAX, rails or whatever you want, should be straightforward as this plugin uses nothing but ordinary radio buttons. Disable javascript and behold: it still works!
+Integrating this with AJAX, rails or whatever you want, should be straightforward as this plugin uses nothing but ordinary radio buttons.
+Disable javascript and behold: it still works!
 
-Just create an ordered list with radio buttons. Be sure to adjust the css if you use more or less then the standard ratings (5)
+Just create an (un)ordered list with radio buttons.
 
     <form method="post">
 	
@@ -15,8 +16,23 @@ Just create an ordered list with radio buttons. Be sure to adjust the css if you
     		<li><input type="radio" name="movie[rating]" value="3" id="mr-3"><label for="mr-3">Whatever</label></li>
     		<li><input type="radio" name="movie[rating]" value="4" id="mr-4"><label for="mr-4">Good!</label></li>
     		<li><input type="radio" name="movie[rating]" value="5" id="mr-5"><label for="mr-5">Best Movie Ever</label></li>
+    		
     		<li class="unrate"><input type="radio" name="movie[rating]" value="" id="mr-unrate"><label for="mr-unrate">[clear rating]</label></li>
     	</ol>
 
     	<input type="submit" value="Rate It!" />
     </form>
+    
+To progressively enchance this OL, include the scripts and call createRadioRaters() function on the OL. You can also use a UL but semantically an OL is a better fit IMHO.
+
+    $().ready(function() {
+      $('body').addClass("js");
+      $(".radio-rater").createRadioRaters(imageWidth: 16);
+    });
+
+The class="js" is added so we can programmatically skip styles for non JS devices.
+
+Credits
+-------
+
+Joost Faber (joost.faber@lbi.lostboys.nl) for coming up with some cool CSS to make it all work
