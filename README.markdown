@@ -1,5 +1,5 @@
-jQuery plugin for creating youtube style rating components using progressive enhancement
-========================================================================================
+jQuery plugin for turning radiobuttons into a star rating thingy
+================================================================
 
 clone or download and then open example.html in your browser to see how it works. 
 

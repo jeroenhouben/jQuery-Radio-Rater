@@ -1,0 +1,22 @@
+/*
+* Adjust this stylesheet if you want to use custom images
+* 
+*/
+.js .radio-rater, 
+.radio-rater a:hover, 
+.radio-rater a:active, 
+.radio-rater a:focus, 
+.radio-rater .current {
+	background-image:url(../images/radio-rater/star.gif); /* rate trigger image */
+}
+.js .radio-rater .unrate a {
+	background-image: url(../images/radio-rater/delete.gif);  /* unrate trigger image */
+}
+.js .radio-rater {
+	height:16px; /* should equal image height */
+}
+.js .radio-rater a, 
+.radio-rater .current {
+	height:16px; /* should equal image height */
+	line-height:16px; /* should equal image height */
+}
