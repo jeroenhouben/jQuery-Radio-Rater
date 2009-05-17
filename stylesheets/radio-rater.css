@@ -23,7 +23,8 @@ the clearer is just a LI with a radiobutton that has an empty value
 }
 
 .js .radio-rater li {
-display:inline;
+	display:inline;
+	cursor: pointer;
 }
 .js .radio-rater a, .radio-rater .current {
 	height:16px;

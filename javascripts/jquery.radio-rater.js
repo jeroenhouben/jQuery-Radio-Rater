@@ -1,10 +1,3 @@
-Function.prototype.bind = function(scope) {
-	var method = this;
-	return function() {
-		return method.apply(scope, arguments);
-	}
-}
-
 function RadioRater(container, settings) {
 	
 	this.container = container;
@@ -100,6 +93,10 @@ RadioRater.prototype = {
 		 	$(this).hide();
 			i++;
 		});
+		
+		// don't need labels
+		$('label', this.container).remove();
+
 	}
 	
 }           
@@ -113,3 +110,10 @@ $.extend($.fn, {
 		return this;
 	}
 });
+
+Function.prototype.bind = function(scope) {
+	var method = this;
+	return function() {
+		return method.apply(scope, arguments);
+	}
+}
