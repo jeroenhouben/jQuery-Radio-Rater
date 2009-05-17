@@ -32,7 +32,18 @@ To progressively enchance this OL, include the scripts and call createRadioRater
 
 The class="js" is added so we can programmatically skip styles for non JS devices.
 
+Why another rating widget?
+--------------------------
+
+Yes there are lots of rating plugins out there, also for use with jQuery. But at the time most of them were either:
+
+- hard to customize
+- obtrusive
+- did not work properly with input names with brackets (e.g. move[rating]) 
+
+or just too much code for such a simple thing.
+
 Credits
 -------
 
-Joost Faber (joost.faber@lbi.lostboys.nl) for coming up with some cool CSS to make it all work
+Joost Faber (joost.faber#lbi.lostboys.nl) for coming up with some cool CSS to make it all work

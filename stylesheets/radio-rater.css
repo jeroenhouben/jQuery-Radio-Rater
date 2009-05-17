@@ -1,6 +1,10 @@
-/* rating */
+/* rating trigger image */
 .js .radio-rater, .radio-rater a:hover, .radio-rater a:active, .radio-rater a:focus, .radio-rater .current {
 	background:transparent url(../images/radio-rater/star.gif) repeat-x scroll 0 0;
+}
+/* unrating trigger image */
+.js .radio-rater .unrate a {
+	background-image: url(../images/radio-rater/delete.gif);
 }
 .js .radio-rater {
 	background-position:left top;
@@ -13,10 +17,6 @@
 	position:relative;
 }
 
-.js .radio-rater li {
-	display:inline;
-	cursor: pointer;
-}
 .js .radio-rater a, .radio-rater .current {
 	height:16px;
 	line-height:16px;
@@ -29,9 +29,12 @@
 	top:0;
 	left:0;
 }
-.js .radio-rater .unrate a {
-	background-image: url(../images/radio-rater/delete.gif);
+
+.js .radio-rater li {
+	display:inline;
+	cursor: pointer;
 }
+
 .js .radio-rater a:hover, .radio-rater a:active, .radio-rater a:focus {
 	background-position:0 100%;
 }
