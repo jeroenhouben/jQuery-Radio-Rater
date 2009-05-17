@@ -4,7 +4,7 @@ function RadioRater(container, settings) {
 	*/ 
 	this.container = container;
 	/*
-	* elements are stacked, start at this z-index and counting DOWN
+	* elements are stacked, starting at this z-index and counting DOWN
 	*/
 	this.zIndexStart = 30;
 	/*
@@ -20,8 +20,9 @@ function RadioRater(container, settings) {
 	this.ratingOptionWidthPerc 	= 100 / this.numberOfRatingOptions; // gets the width for each option as percentage %
 
 	this.ratingAnchor  = $('<a href="#">rater</a>');
-	this.unRateAnchor  = $('<a href="#" style="z-index:'+this.zIndexStart+'">unrater</a>');
-	this.currentRating = $('<li class="current" style="width: 0%;">0 / '+this.numberOfRatingOptions+'</li>');
+	this.unRateAnchor  = $('<a href="#">unrater</a>');
+	var currentRatingZindex = (this.zIndexStart-this.numberOfRatingOptions-2);
+	this.currentRating = $('<li class="current" style="z-index:' +currentRatingZindex+ '">0 / '+this.numberOfRatingOptions+'</li>');
 	
 	this.init();
 }
@@ -65,7 +66,7 @@ RadioRater.prototype = {
 	visualizeRating: function(rating) {
 		if (rating && rating > 0) {
 			$('a', this.container).css("background-position", "0 100%");
-			$('a.rating'+rating, this.container).css("background-position", "0 -16px");
+			$('a.rating'+rating, this.container).css("background-position", "0 -"+ this.imageWidth);
 			this.currentRating.css("width", (this.ratingOptionWidthPerc * rating) + "%");
 			return true;
 		}

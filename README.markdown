@@ -27,10 +27,17 @@ To progressively enchance this OL, include the scripts and call createRadioRater
 
     $().ready(function() {
       $('body').addClass("js");
-      $(".radio-rater").createRadioRaters(imageWidth: 16);
+      $(".radio-rater").createRadioRaters();
     });
 
 The class="js" is added so we can programmatically skip styles for non JS devices.
+
+How to customize?
+-----------------
+By default, you just need to include one stylesheet: radio-rater-base.css
+If you want different images you can override some styles in a seperate css file. radio-radio-bigsmile.css and radio-rater-star.css are examples.
+
+Having more or less rating options and putting in an unrate option is just a matter of adding more radio buttons.
 
 Why another rating widget?
 --------------------------

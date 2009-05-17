@@ -40,4 +40,5 @@
 }
 .js .radio-rater .current {
 	background-position:left center;
+	width: 0%;
 }
