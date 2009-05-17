@@ -1,10 +1,8 @@
 jQuery plugin for turning radiobuttons into a star rating thingy
 ================================================================
 
-clone or download and then open example.html in your browser to see how it works. 
-
-Integrating this with AJAX, rails or whatever you want, should be straightforward as this plugin uses nothing but ordinary radio buttons.
-Disable javascript and behold: it still works!
+Usage:
+------
 
 Just create an (un)ordered list with radio buttons.
 
@@ -30,14 +28,18 @@ To progressively enchance this OL, include the scripts and call createRadioRater
       $(".radio-rater").createRadioRaters();
     });
 
-The class="js" is added so we can programmatically skip styles for non JS devices.
+The .js class is added to the body so we can programmatically skip styles for non JS devices.
+
+Integrating this with AJAX, rails or whatever you want, should be straightforward as this plugin uses nothing but ordinary radio buttons.
+Disable javascript and behold: it still works!
+
 
 How to customize?
 -----------------
 By default, you just need to include one stylesheet: radio-rater-base.css
 If you want different images you can override some styles in a seperate css file. 
 
-Be sure to pass the imaeWidth to the createRadioRaters() function
+Be sure to pass the imageWidth to the createRadioRaters() function
 
     $(".radio-rater").createRadioRaters({imageWidth: 64});
 
