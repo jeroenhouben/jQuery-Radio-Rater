@@ -4,13 +4,13 @@ function RadioRater(container, settings) {
 
 	// find radios for rating and (optionally radios for unrating/resetting)
 	this.ratingRadios = $("input:radio[value!=]", container);
-	this.clearRadio   = $("input:radio[value=]", container);
+	this.unRateRadio  = $("input:radio[value=]", container);
 	
 	this.numberOfRatingOptions 	= this.ratingRadios.length;
 	this.ratingOptionWidth 			= 100 / this.numberOfRatingOptions; // gets the width for each option as percentage %
 
 	this.ratingAnchor  = $('<a href="#">rater</a>');
-	this.clearAnchor   = $('<a href="#">clearer</a>');
+	this.unRateAnchor   = $('<a href="#">unrater</a>');
 	this.currentRating = $('<li class="current" style="width: 0%;">0 / '+this.numberOfRatingOptions+'</li>');
 
 	// add the LI with the current rating
@@ -20,8 +20,8 @@ function RadioRater(container, settings) {
 	
 	this.transformRatingRadios();
 	
-	if (this.clearRadio.length > 0) {
-		this.clearAnchor.bind("click", this.unRateIt.bind(this));
+	if (this.unRateRadio.length > 0) {
+		this.unRateAnchor.bind("click", this.unRateIt.bind(this));
 		this.transformClearTrigger();
 	}
 	
@@ -42,7 +42,7 @@ RadioRater.prototype = {
 	},
 	
 	unRateIt: function(e) {
-		this.clearRadio.click();
+		this.unRateRadio.click();
 		this.visualizeRating(null);
 		// stop event
 	 	e.preventDefault();
@@ -64,10 +64,10 @@ RadioRater.prototype = {
 
 	transformClearTrigger: function() {
 		// hide radio button
-		this.clearRadio.hide();
-		this.clearAnchor.insertAfter(this.clearRadio);
-		// add a css class to the container element so we can create space for the clearer Anchor
-		$(this.container).addClass("with-clearer");
+		this.unRateRadio.hide();
+		this.unRateAnchor.insertAfter(this.unRateRadio);
+		// add a css class to the container element so we can create space for the unrater Anchor
+		$(this.container).addClass("with-unrater");
 	},
 
 	transformRatingRadios: function() {

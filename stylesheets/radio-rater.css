@@ -18,7 +18,7 @@
 this class gets set by JS if the rating component includes a "clearer"
 the clearer is just a LI with a radiobutton that has an empty value
 */
-.js .with-clearer {
+.js .with-unrater {
 	margin-left: 16px;
 }
 
@@ -38,7 +38,7 @@ the clearer is just a LI with a radiobutton that has an empty value
 	top:0;
 	left:0;
 }
-.js .radio-rater .clear a {
+.js .radio-rater .unrate a {
 	background-image: url(../images/radio-rater/delete.gif);
 	width:16px;
 	left:-16px;
